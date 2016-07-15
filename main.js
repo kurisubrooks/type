@@ -1,17 +1,23 @@
 const electron = require("electron")
+const os = require("os")
 const {app} = electron
 const {BrowserWindow} = electron
 let win
 
 function spawn() {
-    win = new BrowserWindow({
+    let options = {
         width: 920,
         height: 600,
         show: false,
-        frame: false,
-        titleBarStyle: "hidden-inset",
         defaultEncoding: "UTF-8"
-    })
+    }
+
+    if (os.platform() == "darwin") {
+        options.frame = false
+        options.titleBarStyle = "hidden-inset"
+    }
+
+    win = new BrowserWindow(options)
 
     win.loadURL(`file://${__dirname}/index.html`)
     win.webContents.openDevTools()
