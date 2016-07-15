@@ -1,7 +1,6 @@
 const electron = require("electron")
 const {app} = electron
 const {BrowserWindow} = electron
-
 let win
 
 function spawn() {
@@ -16,11 +15,7 @@ function spawn() {
 
     win.loadURL(`file://${__dirname}/index.html`)
     win.webContents.openDevTools()
-
-    win.on("ready-to-show", () => {
-        win.show()
-    })
-
+    win.once("ready-to-show", () => win.show())
     win.on("closed", () => {
         win = null
     })
