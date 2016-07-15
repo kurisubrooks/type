@@ -28,7 +28,7 @@ body {
     background: none;
     width: 100%;
     height: 100%;
-    max-width: 960px;
+    /*max-width: 960px;*/
     margin: 0 auto;
     padding: 1em 4em;
     cursor: text !important;
