@@ -1,0 +1,63 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    background: #FAFAFA;
+}
+
+body {
+    margin: 0;
+    font-family: "Roboto Mono", "Noto Sans CJK JP", "Noto Sans CJK KR", "Noto Sans CJK SC", "Noto Sans CJK TC", "Noto Sans JP", "Noto Sans KR", "Noto Sans SC", "Noto Sans TC", "游ゴシック", "YuGothic", "ヒラギノ角ゴ Pro W3", monospace;
+    overflow-x: hidden;
+    -webkit-font-smoothing: subpixel-antialiased;
+}
+
+.container {
+    padding-top: 38px;
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+}
+
+.container .editor {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0 auto;
+    max-width: 960px;
+    height: 100%;
+    padding: 1em 4em;
+    cursor: text !important;
+    font: inherit !important;
+    border: none;
+    background: none;
+    resize: none;
+}
+
+.container .editor:focus {
+    outline: none;
+}
+
+.title {
+    width: 100%;
+    height: 37px;
+    background: #EEE;
+    color: white;
+    padding-left: 80px;
+    -webkit-app-region: drag;
+    -webkit-user-select: none;
+    position: fixed;
+    border-bottom: 1px solid #DDD;
+}
+
+.title .tabs {
+
+}
+
+.title .tabs ol, .title .tabs li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
