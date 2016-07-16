@@ -30,7 +30,7 @@ body {
     height: 100%;
     /*max-width: 960px;*/
     margin: 0 auto;
-    padding: 1em 4em;
+    padding: 1em 2em;
     cursor: text !important;
     border: none;
     resize: none;
@@ -38,6 +38,27 @@ body {
 
 .container .editor:focus {
     outline: none;
+}
+
+/* laptop */
+@media (min-width: 500px) {
+    .container .editor {
+        padding: 1em 5em !important;
+    }
+}
+
+/* desktop */
+@media (min-width: 1024px) {
+    .container .editor {
+        padding: 1em 10em !important;
+    }
+}
+
+/* ultra wide */
+@media (min-width: 1824px) {
+    .container .editor {
+        padding: 1em 10em !important;
+    }
 }
 
 .title {
