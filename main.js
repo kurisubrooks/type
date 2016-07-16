@@ -6,14 +6,17 @@ let win
 
 function spawn() {
     let options = {
+        title: "",
+        minWidth: 300,
+        minHeight: 94,
         width: 920,
         height: 600,
         show: false,
+        autoHideMenuBar: true,
         defaultEncoding: "UTF-8"
     }
 
     if (os.platform() == "darwin") {
-        options.frame = false
         options.titleBarStyle = "hidden-inset"
     }
 
