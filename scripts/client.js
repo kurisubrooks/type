@@ -5,7 +5,8 @@ const {remote} = electron
 const {dialog} = remote
 
 const dropbox = document.getElementById("global")
-const editor = $("#editor")
+const $editor = $("#editor")
+const $title = $("#window:name")
 
 function checkFileType(name, mime) {
     let splice = name.split(".")
@@ -14,8 +15,8 @@ function checkFileType(name, mime) {
 }
 
 function setDocument(content) {
-    editor.val("")
-    editor.val(content)
+    $editor.val("")
+    $editor.val(content)
 }
 
 function saveDocument(type) {
@@ -26,10 +27,30 @@ function saveDocument(type) {
         filters: [ { name: "text", extensions: ["txt"] } ]
     }, (filename) => {
         if (!filename) return
-        fs.writeFile(filename, editor.val(), (err) => {
+        fs.writeFile(filename, $editor.val(), (err) => {
             if (err) console.error(err)
         })
     })
+}
+
+function insertAtCursor(value) {
+    var cursorPos = $editor.prop("selectionStart")
+    var v = $editor.val()
+    var textBefore = v.substring(0, cursorPos)
+    var textAfter  = v.substring(cursorPos, v.length)
+    $editor.val(textBefore + $(this).val() + textAfter)
+}
+
+function typeInTextarea(ins) {
+    var start = $editor.prop("selectionStart")
+    var end = $editor.prop("selectionEnd")
+    var text = $editor.val()
+    var before = text.substring(0, start)
+    var after  = text.substring(end, text.length)
+    $editor.val(before + ins + after)
+    $editor[0].selectionStart = $editor[0].selectionEnd = start + ins.length
+    $editor.focus()
+    return false
 }
 
 document.onkeydown = function (e) {
@@ -45,7 +66,7 @@ document.onkeydown = function (e) {
     // tab
     if (e.keyCode == 9) {
         e.preventDefault()
-        // insert `    ` at cursor
+        typeInTextarea("	")
     }
 }
 
