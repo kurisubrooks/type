@@ -15,10 +15,13 @@ function checkFileType(name, mime) {
 }
 
 function setDocument(file, content) {
-    console.log(file)
     $editor.val("")
     $editor.val(content)
-    $title.text(file.name)
+    setTitle(file.name)
+}
+
+function setTitle(title) {
+    $title.text(title)
 }
 
 function saveDocument(type) {
@@ -31,6 +34,7 @@ function saveDocument(type) {
         if (!filename) return
         fs.writeFile(filename, $editor.val(), (err) => {
             if (err) console.error(err)
+            setTitle(filename.split("/")[filename.split("/").length - 1])
         })
     })
 }
