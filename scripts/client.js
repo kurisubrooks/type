@@ -6,7 +6,7 @@ const {dialog} = remote
 
 const dropbox = document.getElementById("global")
 const $editor = $("#editor")
-const $title = $("#window:name")
+const $title = $("#title")
 
 function checkFileType(name, mime) {
     let splice = name.split(".")
@@ -14,9 +14,11 @@ function checkFileType(name, mime) {
     return (fileTypes.indexOf(last) >= 0) ? true : false
 }
 
-function setDocument(content) {
+function setDocument(file, content) {
+    console.log(file)
     $editor.val("")
     $editor.val(content)
+    $title.text(file.name)
 }
 
 function saveDocument(type) {
@@ -85,7 +87,7 @@ dropbox.ondrop = (e) => {
 
     fs.readFile(file.path, "utf-8", (err, data) => {
         if (err) throw err
-        setDocument(data)
+        setDocument(file, data)
     })
 
     return false
