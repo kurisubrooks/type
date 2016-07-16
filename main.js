@@ -7,6 +7,7 @@ let win
 function spawn() {
     let options = {
         title: "",
+        icon: "",
         minWidth: 300,
         minHeight: 94,
         width: 920,
