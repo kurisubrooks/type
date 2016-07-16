@@ -1,9 +1,10 @@
 const fs = require("fs")
-const $ = require("jquery")
 const electron = require("electron")
+const process = require("process")
 const {remote} = electron
 const {dialog} = remote
 
+const $ = require("jquery")
 const dropbox = document.getElementById("global")
 const $editor = $("#editor")
 const $title = $("#title")
@@ -28,8 +29,8 @@ function saveDocument(type) {
     dialog.showSaveDialog({
         title: "Save",
         buttonLabel: "Save",
-        defaultPath: __dirname,
-        filters: [ { name: "text", extensions: ["txt"] } ]
+        defaultPath: (process.env.HOME) ? process.env.HOME : __dirname/*,
+        filters: [ { name: "text", extensions: ["txt"] } ]*/
     }, (filename) => {
         if (!filename) return
         fs.writeFile(filename, $editor.val(), (err) => {
