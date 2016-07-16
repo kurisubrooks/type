@@ -14,7 +14,8 @@ function spawn() {
         height: 600,
         show: false,
         autoHideMenuBar: true,
-        defaultEncoding: "UTF-8"
+        defaultEncoding: "UTF-8",
+        backgroundColor: "#EEEEEE"
     }
 
     if (os.platform() == "darwin") {
