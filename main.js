@@ -1,13 +1,14 @@
 const electron = require("electron")
 const os = require("os")
+const path = require("path")
 const {app} = electron
 const {BrowserWindow} = electron
 let win
 
 function spawn() {
     let options = {
-        title: "",
-        icon: "",
+        title: "Type",
+        icon: path.join(__dirname, "resources", "Icon.png"),
         minWidth: 300,
         minHeight: 94,
         width: 920,
@@ -19,7 +20,13 @@ function spawn() {
     }
 
     if (os.platform() == "darwin") {
+        options.icon = path.join(__dirname, "resources", "Icon.icns")
         options.titleBarStyle = "hidden-inset"
+    }
+
+    if (os.platform() == "win32") {
+        options.title = ""
+        options.icon = path.join(__dirname, "resources", "Icon.ico")
     }
 
     win = new BrowserWindow(options)
